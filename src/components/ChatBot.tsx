@@ -27,7 +27,7 @@ export function ChatBot() {
 
   // Contexto fixo para limitar as respostas à região AMURES e Lages, SC
   const CONTEXT = (
-    "Você é um assistente especializado em turismo na região da AMURES e Lages, Santa Catarina, Brasil. " +
+    "Você é um assistente especializado em turismo na região Lages, Santa Catarina, Brasil. " +
     "Todas as respostas devem se limitar a essa região. " +
     "Forneça roteiros turísticos, dicas e informações considerando essa localidade. " +
     "Por exemplo, se o usuário pedir um roteiro turístico para uma data específica, " +
