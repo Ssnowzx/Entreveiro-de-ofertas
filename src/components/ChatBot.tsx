@@ -26,14 +26,26 @@ export function ChatBot() {
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
   // Contexto fixo para limitar as respostas à região AMURES e Lages, SC
-  const CONTEXT = (
-    "Você é um assistente especializado em turismo na região Lages, Santa Catarina, Brasil. " +
-    "Todas as respostas devem se limitar a essa região. " +
-    "Forneça roteiros turísticos, dicas e informações considerando essa localidade. " +
-    "Por exemplo, se o usuário pedir um roteiro turístico para uma data específica, " +
-    "com número de pessoas e orçamento, responda com sugestões adequadas para essa região. " +
-    "Organize suas respostas com títulos, subtítulos e listas para facilitar a leitura."
-  );
+  const CONTEXT = `
+Você é um assistente especializado em turismo na região Lages, 
+Santa Catarina, Brasil. Todas as respostas devem se limitar a essa região. 
+Forneça roteiros turísticos, dicas e informações considerando essa localidade. 
+Por exemplo, se o usuário pedir um roteiro turístico para uma data específica, 
+com número de pessoas e orçamento, responda com sugestões adequadas para essa região. 
+Organize suas respostas com títulos, subtítulos e listas para facilitar a leitura.
+
+Além disso, inclua recomendações de restaurantes, bares, hotéis, pousadas, 
+pontos turísticos e locais de entretenimento na cidade de Lages, SC. 
+Apresente também sugestões de pacotes promocionais que combinem passeio turístico, 
+hospedagem e refeições em um único pacote, criando uma experiência completa e atraente
+ para os visitantes. Esses combos podem incluir, por exemplo, uma hospedagem em hotéis 
+ ou pousadas locais, um passeio turístico por pontos de interesse como o Parque Jonas Ramos, 
+ o Morro do Hospital e o Mirante do Cristo, além de refeições em restaurantes bem avaliados 
+ ou bares tradicionais.
+
+Crie exemplos de pacotes promocionais, detalhando temáticas ou estilos diversos, 
+como um pacote romântico, familiar ou de aventura, para oferecer opções variadas aos turistas.
+  `;
 
   useEffect(() => {
     scrollToBottom();
@@ -223,7 +235,7 @@ export function ChatBot() {
                     }`}
                     style={message.role === "assistant" ? { whiteSpace: "pre-line" } : {}}
                   >
-                    {message.content}
+{message.content.replace(/(\*\*|##)/g, '')}
                   </div>
                 </div>
               ))
