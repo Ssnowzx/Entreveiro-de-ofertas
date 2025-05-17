@@ -39,7 +39,7 @@ export function NavigationHeader() {
               <span className="text-primary-foreground font-bold text-xl">L</span>
             </div>
             <span className="font-bold text-xl text-primary hidden sm:inline-block">
-              Lages360
+              Entreveiro de Ofertas
             </span>
           </Link>
         </div>
