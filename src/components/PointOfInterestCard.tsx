@@ -2,6 +2,7 @@
 import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface PointOfInterestCardProps {
   image: string;
@@ -10,7 +11,8 @@ interface PointOfInterestCardProps {
   rating: number;
   categories: string[];
   qrCode?: boolean;
-  tourVirtual?: boolean;
+  infoAvailable?: boolean;
+  id: string;
 }
 
 export function PointOfInterestCard({
@@ -20,8 +22,30 @@ export function PointOfInterestCard({
   rating,
   categories,
   qrCode = false,
-  tourVirtual = false,
+  infoAvailable = false,
+  id,
 }: PointOfInterestCardProps) {
+  const addToCart = () => {
+    // Busca o carrinho atual do localStorage ou cria um novo
+    const currentCart = JSON.parse(localStorage.getItem('tourist-cart') || '[]');
+    
+    // Verifica se o item já está no carrinho
+    if (!currentCart.some((item: {id: string}) => item.id === id)) {
+      currentCart.push({
+        id,
+        title,
+        image,
+        description: description.substring(0, 50) + "..."
+      });
+      
+      localStorage.setItem('tourist-cart', JSON.stringify(currentCart));
+      
+      // Poderia adicionar uma notificação aqui
+      const event = new CustomEvent('cart-updated', { detail: currentCart.length });
+      window.dispatchEvent(event);
+    }
+  };
+
   return (
     <div className="group relative bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
       <div className="relative h-48 overflow-hidden">
@@ -30,11 +54,11 @@ export function PointOfInterestCard({
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        {(qrCode || tourVirtual) && (
+        {(qrCode || infoAvailable) && (
           <div className="absolute top-3 right-3 flex space-x-2">
-            {tourVirtual && (
+            {infoAvailable && (
               <Badge variant="secondary" className="bg-secondary/90 backdrop-blur-sm">
-                Tour 360°
+                Informações Turísticas
               </Badge>
             )}
             {qrCode && (
@@ -66,10 +90,12 @@ export function PointOfInterestCard({
         </div>
         
         <div className="flex justify-between">
-          <Button variant="outline" size="sm">Ver detalhes</Button>
-          {tourVirtual && (
-            <Button variant="default" size="sm">Tour Virtual</Button>
-          )}
+          <Button variant="outline" size="sm" asChild>
+            <Link to={`/ponto/${id}`}>Ver detalhes</Link>
+          </Button>
+          <Button variant="default" size="sm" onClick={addToCart}>
+            Adicionar
+          </Button>
         </div>
       </div>
     </div>

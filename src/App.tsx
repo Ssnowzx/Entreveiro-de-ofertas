@@ -11,6 +11,8 @@ import Comercio from "./pages/Comercio";
 import Explorar from "./pages/Explorar";
 import Associacao from "./pages/Associacao";
 import ComercioCadastro from "./pages/ComercioCadastro";
+import PontoDetalhe from "./pages/PontoDetalhe";
+import Carrinho from "./pages/Carrinho";
 import { ChatBot } from "./components/ChatBot";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/explorar" element={<Explorar />} />
           <Route path="/associacao" element={<Associacao />} />
           <Route path="/comercio/cadastro" element={<ComercioCadastro />} />
+          <Route path="/ponto/:id" element={<PontoDetalhe />} />
+          <Route path="/carrinho" element={<Carrinho />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ChatBot />

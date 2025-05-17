@@ -20,8 +20,8 @@ const Index = () => {
         <section className="relative h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary to-lages360-light-green overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop" 
-              alt="Paisagem da Serra Catarinense" 
+              src="https://images.unsplash.com/photo-1505672678657-cc7037095e60?q=80&w=2070&auto=format&fit=crop" 
+              alt="Araucárias na Serra Catarinense" 
               className="w-full h-full object-cover opacity-30"
             />
           </div>
@@ -56,7 +56,7 @@ const Index = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-center mb-2">Explore a Cidade</h3>
                   <p className="text-muted-foreground text-center">
-                    Descubra os melhores pontos turísticos, roteiros personalizados e tours virtuais 360°.
+                    Descubra os melhores pontos turísticos, roteiros personalizados e informações turísticas detalhadas.
                   </p>
                 </CardContent>
               </Card>
@@ -115,25 +115,28 @@ const Index = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <PointOfInterestCard 
+                id="parque-ecologico"
                 image="https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2069&auto=format&fit=crop"
                 title="Parque Ecológico João José Theodoro da Costa Neto"
                 description="Área de preservação ambiental com trilhas, cachoeiras e fauna e flora nativas da região."
                 rating={4.8}
                 categories={["Natureza", "Trilhas", "Aventura"]}
-                tourVirtual={true}
+                infoAvailable={true}
                 qrCode={true}
               />
               
-              <PointOfInterestCard 
+              <PointOfInterestCard
+                id="catedral-diocesana"
                 image="https://images.unsplash.com/photo-1580674684089-3cf5e5655ff5?q=80&w=2070&auto=format&fit=crop"
                 title="Catedral Diocesana de Lages"
                 description="Um dos marcos históricos e religiosos mais importantes da cidade, com arquitetura impressionante."
                 rating={4.6}
                 categories={["Histórico", "Religioso", "Arquitetura"]}
-                tourVirtual={true}
+                infoAvailable={true}
               />
               
               <PointOfInterestCard 
+                id="museu-historico"
                 image="https://images.unsplash.com/photo-1591818043896-44f27bdd0188?q=80&w=1949&auto=format&fit=crop"
                 title="Museu Histórico Thiago de Castro"
                 description="Acervo que preserva a memória e história da formação de Lages e da cultura serrana."

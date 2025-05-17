@@ -28,7 +28,8 @@ export function ChatBot() {
     "Todas as respostas devem se limitar a essa região. " +
     "Forneça roteiros turísticos, dicas e informações considerando essa localidade. " +
     "Por exemplo, se o usuário pedir um roteiro turístico para uma data específica, " +
-    "com número de pessoas e orçamento, responda com sugestões adequadas para essa região."
+    "com número de pessoas e orçamento, responda com sugestões adequadas para essa região. " +
+    "Organize suas respostas com títulos, subtítulos e listas para facilitar a leitura."
   );
 
   useEffect(() => {
@@ -112,40 +113,40 @@ export function ChatBot() {
       {/* Botão flutuante para abrir o chat */}
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg"
+        className="fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-lg"
         variant="default"
         size="icon"
         style={{ zIndex: 40 }}
       >
-        <MessageCircle className="h-6 w-6" />
+        <MessageCircle className="h-5 w-5" />
       </Button>
 
       {/* Container do chat */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-[95%] sm:w-[350px] md:w-[400px] bg-white rounded-lg shadow-lg border overflow-hidden flex flex-col" style={{ zIndex: 50, maxHeight: "600px", height: "500px" }}>
+        <div className="fixed bottom-6 right-6 w-[90%] sm:w-[320px] md:w-[350px] bg-white rounded-lg shadow-lg border overflow-hidden flex flex-col" style={{ zIndex: 50, maxHeight: "500px", height: "450px" }}>
           {/* Header do chat */}
-          <div className="bg-primary text-primary-foreground p-4 flex justify-between items-center">
+          <div className="bg-primary text-primary-foreground p-3 flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <MessageCircle className="h-5 w-5" />
-              <span className="font-medium">Assistente Turístico</span>
+              <MessageCircle className="h-4 w-4" />
+              <span className="font-medium text-sm">Assistente Turístico</span>
             </div>
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={() => setIsOpen(false)}
-              className="h-8 w-8 rounded-full hover:bg-primary-foreground/20"
+              className="h-7 w-7 rounded-full hover:bg-primary-foreground/20"
             >
               <X className="h-4 w-4" />
             </Button>
           </div>
           
           {/* Mensagens */}
-          <div className="flex-1 overflow-y-auto p-4 bg-muted/30 space-y-4">
+          <div className="flex-1 overflow-y-auto p-3 bg-muted/30 space-y-3">
             {messages.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
-                <MessageCircle className="h-12 w-12 mb-2 opacity-20" />
-                <h3 className="font-medium text-lg">Como posso ajudar?</h3>
-                <p>Faça perguntas sobre turismo em Lages e região da AMURES</p>
+                <MessageCircle className="h-10 w-10 mb-2 opacity-20" />
+                <h3 className="font-medium text-base">Como posso ajudar?</h3>
+                <p className="text-sm">Faça perguntas sobre turismo em Lages e região da AMURES</p>
               </div>
             ) : (
               messages.map((message, index) => (
@@ -156,11 +157,12 @@ export function ChatBot() {
                   }`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-lg p-3 ${
+                    className={`max-w-[85%] rounded-lg p-2.5 text-sm ${
                       message.role === "user"
                         ? "bg-primary text-primary-foreground"
-                        : "bg-muted"
+                        : "bg-muted prose prose-sm max-w-none"
                     }`}
+                    style={message.role === "assistant" ? { whiteSpace: "pre-line" } : {}}
                   >
                     {message.content}
                   </div>
@@ -169,11 +171,11 @@ export function ChatBot() {
             )}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] rounded-lg p-3 bg-muted">
-                  <div className="flex space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-foreground/30 animate-bounce" />
-                    <div className="w-2 h-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "0.2s" }} />
-                    <div className="w-2 h-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "0.4s" }} />
+                <div className="max-w-[85%] rounded-lg p-2 bg-muted">
+                  <div className="flex space-x-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 animate-bounce" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "0.2s" }} />
+                    <div className="w-1.5 h-1.5 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "0.4s" }} />
                   </div>
                 </div>
               </div>
@@ -182,21 +184,21 @@ export function ChatBot() {
           </div>
           
           {/* Input do chat */}
-          <form onSubmit={handleSendMessage} className="p-3 border-t bg-background">
+          <form onSubmit={handleSendMessage} className="p-2 border-t bg-background">
             <div className="flex gap-2">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Digite sua mensagem..."
                 disabled={isLoading}
-                className="flex-1"
+                className="flex-1 text-sm"
               />
               <Button 
                 type="submit" 
-                size="icon" 
+                size="sm"
                 disabled={isLoading || !input.trim()}
               >
-                <Send className="h-4 w-4" />
+                <Send className="h-3.5 w-3.5" />
               </Button>
             </div>
           </form>
