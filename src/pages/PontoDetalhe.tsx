@@ -1,15 +1,25 @@
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { NavigationHeader } from "@/components/NavigationHeader";
-import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
+import { NavigationHeader } from "../components/NavigationHeader";
+import { Footer } from "../components/Footer";
+import { Button } from "../components/ui/button";
 import { Star, MapPin, Info, Clock, Ban, Check, ArrowLeft } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "../components/ui/badge";
 import { Link } from "react-router-dom";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
+import { Card, CardContent } from "../components/ui/card";
+import { useToast } from "../hooks/use-toast";
+
+// Importando imagens locais
+import ParqueEcologicoImg from "../imgs/PontosTuristicos/parque natural joao jose theodoro.jpg";
+import ParqueEcologicoGallery1 from "../imgs/PontosTuristicos/mirantes da serra.jpg";
+import ParqueEcologicoGallery2 from "../imgs/PontosTuristicos/tanque.jpg";
+import ParqueEcologicoGallery3 from "../imgs/PontosTuristicos/vidal ramos.jpg";
+
+import CatedralImg from "../imgs/PontosTuristicos/catedral img.jpg";
+import CatedralGallery1 from "../imgs/PontosTuristicos/catedral img.jpg";
+import CatedralGallery2 from "../imgs/PontosTuristicos/mirantes da serra.jpg";
+import CatedralGallery3 from "../imgs/PontosTuristicos/thiago de castro.jpg";
 
 // Simulando pontos turísticos
 const mockPontosTuristicos = [
@@ -18,11 +28,11 @@ const mockPontosTuristicos = [
     title: "Parque Ecológico João José Theodoro da Costa Neto",
     description: "Área de preservação ambiental com trilhas, cachoeiras e fauna e flora nativas da região. O parque oferece diversos trilhos ecológicos, centro de visitantes e área para piquenique. Ideal para famílias e amantes da natureza.",
     longDescription: "O Parque Ecológico João José Theodoro da Costa Neto é uma área de preservação ambiental que abrange mais de 234 hectares de mata nativa preservada. Criado em 1997, o parque tem como objetivo conservar a biodiversidade da Mata Atlântica e proporcionar educação ambiental aos visitantes. O local conta com trilhas sinalizadas, centro de visitantes com exposições sobre a fauna e flora local, mirantes com vista panorâmica para a Serra Catarinense e áreas para descanso. É possível observar diversas espécies de pássaros, pequenos mamíferos e uma rica vegetação, incluindo araucárias centenárias. O parque também oferece visitas guiadas mediante agendamento prévio.",
-    image: "https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2069&auto=format&fit=crop",
+    image: ParqueEcologicoImg,
     gallery: [
-      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2071&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2032&auto=format&fit=crop"
+      ParqueEcologicoGallery1,
+      ParqueEcologicoGallery2,
+      ParqueEcologicoGallery3
     ],
     rating: 4.8,
     categories: ["Natureza", "Trilhas", "Aventura"],
@@ -42,11 +52,11 @@ const mockPontosTuristicos = [
     title: "Catedral Diocesana de Lages",
     description: "Um dos marcos históricos e religiosos mais importantes da cidade, com arquitetura impressionante.",
     longDescription: "A Catedral Diocesana de Lages, dedicada a Nossa Senhora dos Prazeres, é um importante marco histórico, cultural e religioso da cidade. Sua construção iniciou-se em 1920, sendo concluída em 1954. O edifício apresenta uma arquitetura neogótica imponente, com torres altas, vitrais coloridos e detalhes ornamentais característicos. No interior, destacam-se o altar-mor em mármore, esculturas religiosas e pinturas sacras de artistas regionais. A catedral está localizada no coração da cidade e representa não apenas um local de culto, mas também um patrimônio histórico que conta a história da formação religiosa e cultural de Lages. Visitas guiadas podem ser realizadas mediante agendamento na secretaria paroquial.",
-    image: "https://images.unsplash.com/photo-1580674684089-3cf5e5655ff5?q=80&w=2070&auto=format&fit=crop",
+    image: CatedralImg,
     gallery: [
-      "https://images.unsplash.com/photo-1548625361-281fc8aa1f99?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1588644525273-f37b60d78512?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605218201737-5ae1de78c2a2?q=80&w=2070&auto=format&fit=crop"
+      CatedralGallery1,
+      CatedralGallery2,
+      CatedralGallery3
     ],
     rating: 4.6,
     categories: ["Histórico", "Religioso", "Arquitetura"],
