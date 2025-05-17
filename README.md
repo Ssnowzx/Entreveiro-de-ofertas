@@ -1,6 +1,6 @@
 # 🎉 Bem-vindo ao seu projeto **Entreveiro de Ofertas**
 
----
+<img src="https://i.imgur.com/EEq4YCu.jpeg" alt="Imagem" width="300">
 
 ## 📌 Informações do projeto
 
