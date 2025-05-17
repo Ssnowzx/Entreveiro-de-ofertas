@@ -1,13 +1,34 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, MapPin, Calendar, Store, Users } from "lucide-react";
+import { Menu, X, MapPin, Calendar, Store, Users, ShoppingCart } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Badge } from "@/components/ui/badge";
 
 export function NavigationHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const isMobile = useIsMobile();
+
+  // Carrega o contador do carrinho quando o componente é montado
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cartItems = JSON.parse(localStorage.getItem('tourist-cart') || '[]');
+      setCartCount(cartItems.length);
+    };
+
+    // Atualiza ao carregar o componente
+    updateCartCount();
+
+    // Adiciona listener para o evento de atualização do carrinho
+    window.addEventListener('cart-updated', updateCartCount);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('cart-updated', updateCartCount);
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b border-border">
@@ -43,8 +64,24 @@ export function NavigationHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="secondary" size="sm" className="hidden sm:flex">Entrar</Button>
-          <Button variant="default" size="sm" className="hidden sm:flex">Cadastrar</Button>
+          {/* Ícone do carrinho com contador */}
+          <Link to="/carrinho" className="relative mr-2">
+            <Button variant="ghost" size="icon" className="h-9 w-9">
+              <ShoppingCart size={18} />
+              {cartCount > 0 && (
+                <Badge variant="destructive" className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                  {cartCount}
+                </Badge>
+              )}
+            </Button>
+          </Link>
+          
+          <Button variant="secondary" size="sm" className="hidden sm:flex" asChild>
+            <Link to="/login">Entrar</Link>
+          </Button>
+          <Button variant="default" size="sm" className="hidden sm:flex" asChild>
+            <Link to="/cadastro">Cadastrar</Link>
+          </Button>
           
           <Button
             variant="ghost"
@@ -93,9 +130,27 @@ export function NavigationHeader() {
               <span className="font-medium">Associação</span>
             </Link>
             
+            <Link
+              to="/carrinho"
+              className="flex items-center gap-2 p-3 rounded-md hover:bg-muted"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <ShoppingCart size={18} />
+              <span className="font-medium">Meu Roteiro</span>
+              {cartCount > 0 && (
+                <Badge variant="destructive" className="ml-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                  {cartCount}
+                </Badge>
+              )}
+            </Link>
+            
             <div className="border-t mt-2 pt-4 flex flex-col gap-3">
-              <Button className="w-full" variant="secondary">Entrar</Button>
-              <Button className="w-full">Cadastrar</Button>
+              <Button className="w-full" variant="secondary" asChild>
+                <Link to="/login">Entrar</Link>
+              </Button>
+              <Button className="w-full" asChild>
+                <Link to="/cadastro">Cadastrar</Link>
+              </Button>
             </div>
           </div>
         </div>

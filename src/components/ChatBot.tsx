@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface Message {
   content: string;
@@ -51,6 +52,18 @@ export function ChatBot() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+
+  // Listener para o evento open-chat
+  useEffect(() => {
+    const handleOpenChat = () => {
+      setIsOpen(true);
+    };
+
+    window.addEventListener('open-chat', handleOpenChat);
+    return () => {
+      window.removeEventListener('open-chat', handleOpenChat);
+    };
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -126,16 +139,25 @@ export function ChatBot() {
 
   return (
     <>
-      {/* Botão flutuante para abrir o chat */}
-      <Button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-lg"
-        variant="default"
-        size="icon"
-        style={{ zIndex: 40 }}
-      >
-        <MessageCircle className="h-5 w-5" />
-      </Button>
+      {/* Botão flutuante para abrir o chat com tooltip */}
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              onClick={() => setIsOpen(true)}
+              className="fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-lg"
+              variant="default"
+              size="icon"
+              style={{ zIndex: 40 }}
+            >
+              <MessageCircle className="h-5 w-5" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="left">
+            <p>Assistente Turístico</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
 
       {/* Container do chat */}
       {isOpen && (

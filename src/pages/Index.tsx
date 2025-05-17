@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { NavigationHeader } from "@/components/NavigationHeader";
 import { Footer } from "@/components/Footer";
@@ -11,6 +10,12 @@ import { RouteCard } from "@/components/RouteCard";
 import { MapPin, Calendar, Store, Users, ArrowRight } from "lucide-react";
 
 const Index = () => {
+  const openChat = () => {
+    // Create a custom event to open the chat
+    const event = new CustomEvent('open-chat');
+    window.dispatchEvent(event);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <NavigationHeader />
@@ -49,53 +54,61 @@ const Index = () => {
             <h2 className="text-center text-3xl font-bold mb-12">Como o Lages360 funciona</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <Card className="border-none shadow-lg">
-                <CardContent className="pt-6">
-                  <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Explore a Cidade</h3>
-                  <p className="text-muted-foreground text-center">
-                    Descubra os melhores pontos turísticos, roteiros personalizados e informações turísticas detalhadas.
-                  </p>
-                </CardContent>
-              </Card>
+              <Link to="/explorar" className="block transition-transform hover:scale-105">
+                <Card className="border-none shadow-lg h-full">
+                  <CardContent className="pt-6">
+                    <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Explore a Cidade</h3>
+                    <p className="text-muted-foreground text-center">
+                      Descubra os melhores pontos turísticos, roteiros personalizados e informações turísticas detalhadas.
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
               
-              <Card className="border-none shadow-lg">
-                <CardContent className="pt-6">
-                  <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
-                    <Calendar className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Roteiros Inteligentes</h3>
-                  <p className="text-muted-foreground text-center">
-                    Acesse roteiros para qualquer perfil de turista, inclusive com recursos de acessibilidade.
-                  </p>
-                </CardContent>
-              </Card>
+              <div onClick={openChat} className="block cursor-pointer transition-transform hover:scale-105">
+                <Card className="border-none shadow-lg h-full">
+                  <CardContent className="pt-6">
+                    <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
+                      <Calendar className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Roteiros Inteligentes</h3>
+                    <p className="text-muted-foreground text-center">
+                      Acesse roteiros para qualquer perfil de turista, inclusive com recursos de acessibilidade.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
               
-              <Card className="border-none shadow-lg">
-                <CardContent className="pt-6">
-                  <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
-                    <Store className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Comércio Local</h3>
-                  <p className="text-muted-foreground text-center">
-                    Conheça e aproveite descontos exclusivos em restaurantes, hotéis e lojas parceiras.
-                  </p>
-                </CardContent>
-              </Card>
+              <Link to="/comercio" className="block transition-transform hover:scale-105">
+                <Card className="border-none shadow-lg h-full">
+                  <CardContent className="pt-6">
+                    <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
+                      <Store className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Comércio Local</h3>
+                    <p className="text-muted-foreground text-center">
+                      Conheça e aproveite descontos exclusivos em restaurantes, hotéis e lojas parceiras.
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
               
-              <Card className="border-none shadow-lg">
-                <CardContent className="pt-6">
-                  <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
-                    <Users className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">Associação Turística</h3>
-                  <p className="text-muted-foreground text-center">
-                    Uma rede que conecta turistas, estabelecimentos comerciais e pontos turísticos.
-                  </p>
-                </CardContent>
-              </Card>
+              <Link to="/associacao" className="block transition-transform hover:scale-105">
+                <Card className="border-none shadow-lg h-full">
+                  <CardContent className="pt-6">
+                    <div className="rounded-full bg-primary/10 w-12 h-12 flex items-center justify-center mb-4 mx-auto">
+                      <Users className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-center mb-2">Associação Turística</h3>
+                    <p className="text-muted-foreground text-center">
+                      Uma rede que conecta turistas, estabelecimentos comerciais e pontos turísticos.
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
           </div>
         </section>
@@ -116,7 +129,7 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <PointOfInterestCard 
                 id="parque-ecologico"
-                image="https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2069&auto=format&fit=crop"
+                image="https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=2070&auto=format&fit=crop"
                 title="Parque Ecológico João José Theodoro da Costa Neto"
                 description="Área de preservação ambiental com trilhas, cachoeiras e fauna e flora nativas da região."
                 rating={4.8}
