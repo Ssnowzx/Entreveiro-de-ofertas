@@ -1,9 +1,10 @@
 
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, Send, X } from "lucide-react";
+import { MessageCircle, Send, X, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 interface Message {
   content: string;
@@ -16,6 +17,7 @@ export function ChatBot() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   // API key do Google Gemini
@@ -35,6 +37,20 @@ export function ChatBot() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Fechar chat quando clicar fora dele
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (chatRef.current && !chatRef.current.contains(event.target as Node) && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -123,7 +139,11 @@ export function ChatBot() {
 
       {/* Container do chat */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-[90%] sm:w-[320px] md:w-[350px] bg-white rounded-lg shadow-lg border overflow-hidden flex flex-col" style={{ zIndex: 50, maxHeight: "500px", height: "450px" }}>
+        <div 
+          ref={chatRef}
+          className="fixed bottom-6 right-6 w-[90%] sm:w-[320px] md:w-[350px] bg-white rounded-lg shadow-lg border overflow-hidden flex flex-col" 
+          style={{ zIndex: 50, maxHeight: "450px", height: "420px" }}
+        >
           {/* Header do chat */}
           <div className="bg-primary text-primary-foreground p-3 flex justify-between items-center">
             <div className="flex items-center gap-2">
@@ -142,8 +162,25 @@ export function ChatBot() {
           
           {/* Mensagens */}
           <div className="flex-1 overflow-y-auto p-3 bg-muted/30 space-y-3">
+            {/* Balão informativo sobre Roteiros Inteligentes */}
+            <div className="flex justify-start mb-2">
+              <div className="flex gap-2 items-start max-w-[85%] bg-blue-50 text-blue-800 rounded-lg p-3 border border-blue-100">
+                <Info className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                <div className="text-xs">
+                  <p className="font-medium mb-1">Roteiros Inteligentes</p>
+                  <p>
+                    Pergunte sobre roteiros personalizados para seu perfil, preferências, 
+                    orçamento e tempo disponível. Posso sugerir passeios completos na região!
+                  </p>
+                  <Badge className="mt-2 bg-blue-200 hover:bg-blue-300 text-blue-800">
+                    Experimente perguntar!
+                  </Badge>
+                </div>
+              </div>
+            </div>
+
             {messages.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
+              <div className="flex flex-col items-center justify-center h-[200px] text-center text-muted-foreground">
                 <MessageCircle className="h-10 w-10 mb-2 opacity-20" />
                 <h3 className="font-medium text-base">Como posso ajudar?</h3>
                 <p className="text-sm">Faça perguntas sobre turismo em Lages e região da AMURES</p>
