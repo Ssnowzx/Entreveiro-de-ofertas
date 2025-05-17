@@ -42,7 +42,7 @@ const Index = () => {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary to-lages360-light-green overflow-hidden">
+        <section className="relative h-[70vh] flex items-center justify-center bg-gradient-to-br from-primary to-Entreveiro de Ofertas-light-green overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
               src={BannerPrincipalImg} 
@@ -58,7 +58,7 @@ const Index = () => {
               Tudo o que a Serra Catarinense tem para oferecer em um só lugar. Roteiros, comércios e experiências únicas através do turismo inteligente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="bg-accent hover:bg-lages360-dark-tan text-accent-foreground">
+              <Button size="lg" asChild className="bg-accent hover:bg-Entreveiro de Ofertas-dark-tan text-accent-foreground">
                 <Link to="/explorar">Explorar Agora</Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="bg-background/20 backdrop-blur-sm text-white border-white hover:bg-background/30">
@@ -71,7 +71,7 @@ const Index = () => {
         {/* Features Section */}
         <section className="py-16 bg-muted/50">
           <div className="container">
-            <h2 className="text-center text-3xl font-bold mb-12">Como o Lages360 funciona</h2>
+            <h2 className="text-center text-3xl font-bold mb-12">Como o Entreveiro de Ofertas funciona</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <Link to="/explorar" className="block transition-transform hover:scale-105">

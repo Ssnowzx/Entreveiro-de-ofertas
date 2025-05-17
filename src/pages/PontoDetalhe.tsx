@@ -309,7 +309,7 @@ const PontoDetalhe = () => {
                       <p className="text-muted-foreground">
                         Este ponto turístico conta com informações detalhadas sobre sua história, 
                         importância cultural e curiosidades. Você pode acessar essas informações 
-                        através do aplicativo Lages360, disponível para download.
+                        através do aplicativo Entreveiro de Ofertas, disponível para download.
                       </p>
                       <div className="mt-4 flex gap-4">
                         <Button variant="outline" size="sm">

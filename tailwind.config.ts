@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				lages360: {
+				EntreveirodeOfertas: {
 					'green': '#2C6E49',
 					'light-green': '#4C956C',
 					'cream': '#FEFEE3',

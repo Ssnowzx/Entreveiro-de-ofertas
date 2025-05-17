@@ -11,7 +11,7 @@ export function Footer() {
               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary">
                 <span className="text-primary-foreground font-bold text-xl">L</span>
               </div>
-              <span className="font-bold text-xl text-primary">Lages360</span>
+              <span className="font-bold text-xl text-primary">Entreveiro de Ofertas</span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">
               Revolucionando o turismo em Lages e região através da integração digital de experiências.
@@ -41,7 +41,7 @@ export function Footer() {
           <div>
             <h3 className="font-medium text-sm">Contato</h3>
             <ul className="mt-3 space-y-2 text-sm">
-              <li><a href="mailto:contato@lages360.com.br" className="text-muted-foreground hover:text-foreground">contato@lages360.com.br</a></li>
+              <li><a href="mailto:contato@EntreveirodeOfertas.com.br" className="text-muted-foreground hover:text-foreground">contato@EntreveirodeOfertas.com.br</a></li>
               <li><a href="tel:+5549999999999" className="text-muted-foreground hover:text-foreground">(49) 99999-9999</a></li>
               <li className="text-muted-foreground">Lages - Santa Catarina</li>
             </ul>
@@ -53,7 +53,7 @@ export function Footer() {
         
         <div className="mt-8 border-t pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Lages360. Todos os direitos reservados.
+            © {new Date().getFullYear()} Entreveiro de Ofertas. Todos os direitos reservados.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link to="#" className="text-xs text-muted-foreground hover:text-foreground">Termos de Uso</Link>
