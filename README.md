@@ -1,65 +1,71 @@
-# Bem-vindo ao seu projeto explora-serra
+# 🎉 Bem-vindo ao seu projeto **Entreveiro de Ofertas**
 
-## Informações do projeto
+---
 
-**URL**: URL do projeto
+## 📌 Informações do projeto
 
-## Como posso editar este código?
+**🔗 URL**: _URL do projeto_
 
-Existem várias formas de editar sua aplicação.
+---
 
-**Use sua IDE preferida**
+## ✏️ Como posso editar este código?
 
-Você pode trabalhar localmente usando sua IDE preferida, clonando este repositório e fazendo push das alterações.
+Você pode editar sua aplicação de diferentes formas:
 
-A única exigência é ter Node.js & npm instalados - [instale com nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 💻 Usando sua IDE preferida
 
-Siga estes passos:
+Você pode trabalhar localmente, clonando este repositório e fazendo push das alterações.
 
-```sh
-# Passo 1: Clone o repositório usando a URL do projeto.
+> **Pré-requisitos**: Node.js e npm instalados  
+> [Instale com nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+```bash
+# Passo 1: Clone o repositório usando a URL do projeto
 git clone <URL_DO_REPOSITORIO>
 
-# Passo 2: Navegue até o diretório do projeto.
+# Passo 2: Navegue até o diretório do projeto
 cd explora-serra
 
-# Passo 3: Instale as dependências necessárias.
+# Passo 3: Instale as dependências
 npm i
 
-# Passo 4: Inicie o servidor de desenvolvimento com recarga automática e visualização instantânea.
+# Passo 4: Inicie o servidor de desenvolvimento com recarga automática
 npm run dev
 ```
 
-**Edite um arquivo diretamente no GitHub**
+---
 
-- Navegue até o(s) arquivo(s) desejado(s).
-- Clique no botão "Editar" (ícone de lápis) no canto superior direito da visualização do arquivo.
-- Faça suas alterações e confirme as mudanças.
+### 🖊️ Editando um arquivo diretamente no GitHub
 
-**Use GitHub Codespaces**
+- Navegue até o(s) arquivo(s) desejado(s)
+- Clique no botão "Editar" (ícone de lápis)
+- Faça suas alterações e confirme
 
-- Navegue até a página principal do seu repositório.
-- Clique no botão "Code" (botão verde) próximo ao canto superior direito.
-- Selecione a aba "Codespaces".
-- Clique em "New codespace" para iniciar um novo ambiente Codespace.
-- Edite os arquivos diretamente dentro do Codespace e confirme e envie suas alterações quando terminar.
+---
 
-## Quais tecnologias são usadas neste projeto?
+### ⚙️ Usando GitHub Codespaces
 
-Este projeto é construído com:
+- Vá até a página principal do repositório
+- Clique no botão **"Code"** → aba **"Codespaces"**
+- Clique em **"New codespace"** para iniciar um novo ambiente
+- Edite os arquivos diretamente e envie suas alterações
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## Como posso fazer o deploy deste projeto?
+## Tecnologias
 
-Basta seguir as instruções da sua plataforma de hospedagem preferida para publicar seu projeto.
+[![Tecnologias](https://skillicons.dev/icons?i=git,github,cs,dotnet,visualstudio,vscode,vite,typescript,react,tailwind)](https://skillicons.dev)
 
-## Posso conectar um domínio personalizado a este projeto?
 
-Sim, você pode!
+---
 
+## 🚀 Como posso fazer o deploy deste projeto?
+
+Siga as instruções da sua plataforma de hospedagem preferida para publicar seu projeto.
+
+---
+
+## 🌍 Posso conectar um domínio personalizado a este projeto?
+
+Sim, você pode!  
 Consulte a documentação da sua plataforma de hospedagem para configurar domínios personalizados.
