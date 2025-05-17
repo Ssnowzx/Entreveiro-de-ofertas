@@ -11,6 +11,7 @@ import Comercio from "./pages/Comercio";
 import Explorar from "./pages/Explorar";
 import Associacao from "./pages/Associacao";
 import ComercioCadastro from "./pages/ComercioCadastro";
+import { ChatBot } from "./components/ChatBot";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/comercio/cadastro" element={<ComercioCadastro />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatBot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
