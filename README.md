@@ -54,7 +54,7 @@ npm run dev
 
 ## Tecnologias
 
-[![Tecnologias](https://skillicons.dev/icons?i=git,github,cs,dotnet,visualstudio,vscode,vite,typescript,react,tailwind)](https://skillicons.dev)
+[![Tecnologias](https://skillicons.dev/icons?i=git,github,visualstudio,vscode,vite,typescript,react,tailwind)](https://skillicons.dev)
 
 
 ---
