@@ -22,7 +22,7 @@ export function ChatBot() {
   const { toast } = useToast();
 
   // API key do Google Gemini
-  const API_KEY = 'AIzaSyAGMeRCt2sze2CxSg0s_P2IzqbQbXLVvfc';
+  const API_KEY = 'AIzaSyDopGUgGD0tF8VroEAvRCmS07ew6yI9xWA';
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
   // Contexto fixo para limitar as respostas à região AMURES e Lages, SC
