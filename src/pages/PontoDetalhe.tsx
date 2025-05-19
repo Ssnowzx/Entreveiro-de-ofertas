@@ -21,8 +21,35 @@ import CatedralGallery1 from "../imgs/PontosTuristicos/catedral img.jpg";
 import CatedralGallery2 from "../imgs/PontosTuristicos/mirantes da serra.jpg";
 import CatedralGallery3 from "../imgs/PontosTuristicos/thiago de castro.jpg";
 
+import MercadoPublicoImg from "../imgs/PontosTuristicos/mercadopublico1.jpg";
+import MercadoPublicoGallery1 from "../imgs/PontosTuristicos/mercadopublico2.jpg";
+import MercadoPublicoGallery2 from "../imgs/PontosTuristicos/mercadopublico3.jpg";
+
 // Simulando pontos turísticos
 const mockPontosTuristicos = [
+  {
+    id: "mercado-publico-lages",
+    title: "Mercado Público de Lages",
+    description: "Mercado tradicional com variedade de produtos locais, artesanato e gastronomia típica.",
+    longDescription: "O Mercado Público de Lages é um ponto histórico e cultural da cidade, conhecido por sua diversidade de produtos locais, incluindo alimentos frescos, artesanato regional e opções gastronômicas típicas da Serra Catarinense. O mercado é um espaço de convivência e comércio que atrai moradores e turistas, oferecendo uma experiência autêntica da cultura local. Além das bancas de produtos, o mercado conta com eventos culturais e feiras temáticas ao longo do ano.",
+    image: MercadoPublicoImg,
+    gallery: [
+      MercadoPublicoGallery1,
+      MercadoPublicoGallery2
+    ],
+    rating: 4.7,
+    categories: ["Mercado", "Artesanato", "Gastronomia"],
+    qrCode: false,
+    infoAvailable: true,
+    address: "Rua Nereu Ramos, Centro, Lages - SC",
+    horario: "Segunda a sábado, das 7h às 19h",
+    entrada: "Gratuita",
+    acessibilidade: true,
+    estacionamento: false,
+    banheiros: true,
+    alimentacao: true,
+    tempoSugerido: "2 horas"
+  },
   {
     id: "parque-ecologico",
     title: "Parque Ecológico João José Theodoro da Costa Neto",

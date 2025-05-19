@@ -14,6 +14,7 @@ import BannerPrincipalImg from "../imgs/BannerPrincipal/Banner principal (Hero S
 import ParqueEcologicoImg from "../imgs/PontosTuristicos/parque natural joao jose theodoro.jpg";
 import CatedralImg from "../imgs/PontosTuristicos/catedral img.jpg";
 import MuseuHistoricoImg from "../imgs/PontosTuristicos/thiago de castro.jpg";
+import MercadoPublicoImg from "../imgs/PontosTuristicos/mercadopublico1.jpg";
 
 import MercadoSerranoImg from "../imgs/Parceiros Comerciais/Mercado serrano.jpeg";
 import SerraAventurasImg from "../imgs/Parceiros Comerciais/Serra Aventuras.jpg";
@@ -138,6 +139,16 @@ const Index = () => {
           <div className="container">
             <h2 className="text-center text-3xl font-bold mb-12">Pontos de Interesse</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <PointOfInterestCard
+                id="mercado-publico-lages"
+                title="Mercado Público de Lages"
+                description="Mercado tradicional com variedade de produtos locais, artesanato e gastronomia típica."
+                image={MercadoPublicoImg}
+                rating={4.7}
+                categories={["Mercado", "Artesanato", "Gastronomia"]}
+                qrCode={false}
+                infoAvailable={true}
+              />
               <PointOfInterestCard
                 id="parque-ecologico"
                 title="Parque Ecológico João José Theodoro da Costa Neto"
